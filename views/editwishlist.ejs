@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cloud.typography.com/6638272/7155352/css/fonts.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/css/basicstyles.css" type="text/css" media="all">
+   
+
+   
+</head>
+<body>
+
+ <header class="mainheader">
+        <div class="logoheader">
+            <span>
+                    <img src="/images/hbi-logo1.png" alt="">
+                </span>
+        </div>
+        <div class="menuheader">
+         <ul>
+             <li> <a id="logout" class="logout" href="/logout"> Logout </a> <br>
+         </ul>           
+        </div>
+  </header>
+
+    <div class="displayeditresults">
+
+    <ul >  
+    <form  method="post">
+       <p class="editform">Edit WishList</p>
+    <% for(var i=0; i<result.length; i++) {%>
+
+          
+           <li><input class="editform" type="text" name="editwishlisttext" id="editwishlisttext" maxlength="50" 
+           placeholder=<%=result[i].wishlisttext%> /></li>
+            <li><input  class="editform"type="text" name="editwishlistlink" id="editwishlistlink" maxlength="250" placeholder="<%= result[i].wishlistlink%> "/></li>
+             <li> <input class="editform" type="text" name="editwishlistcomment" id="editwishlistcomment" maxlength="250" placeholder="<%= result[i].wishlistcomment%> " /> </li>
+            
+
+    <% } %> 
+    <li>
+      <button class="editform" type="button" id="savelistbtn" name="savelistbtn" id="savelistbtn" >Save</button>
+       <button  type="button" id="cancellistbtn" name="cancellistbtn" id="cancellistbtn" >Cancel</button>
+</li>
+
+      </form>
+     
+    </ul>
+    </div>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script>
+
+    $(document).ready(function (event) {
+       $('#cancellistbtn').click(function(event){
+        event.preventDefault();
+          console.log("Am i comin in cancel button");
+                window.history.back();
+               // return false;
+           });
+
+   
+
+
+
+       $('#savelistbtn').click(function(event){
+          event.preventDefault();
+          console.log("Am i comin in save button");
+                 var wishlisttext = $("#wishlisttext").val() || $('#editwishlisttext').attr('placeholder');
+                 var wishlistlink = $("#wishlistlink").val() || $('#editwishlistlink').attr('placeholder');
+                 var wishlistcomment=$("#wishlistcomment").val() || $('#editwishlistcomment').attr('placeholder');;
+
+                 console.log(wishlisttext + "   " + wishlistlink + "   " + wishlistcomment);
+
+               // return false;
+           });
+
+   });
+
+    </script>
+</body>
+</html>
